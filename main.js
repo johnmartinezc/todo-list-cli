@@ -5,13 +5,13 @@ console.log("==============================================")
 console.log("\n")
 console.log("Your to-do list is empty.")
 
-console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] Exiting to-do list")
+console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] unfinnished to-do item \n" + "[6] Exiting to-do list")
 
 let option = Number(prompt(">"))
 let toDoList = []
 let statusArray = []
 
-while(option !== 3){
+while(option !== 6){
     if(option === 1){
 
         console.log("~ Creating a new to-do item ~")
@@ -23,7 +23,7 @@ while(option !== 3){
         addItem = prompt("> ")
         }
 
-         toDoList.push(addItem)
+        toDoList.push(addItem)
         statusArray.push(false)
 
         toList()
@@ -48,20 +48,82 @@ while(option !== 3){
         }
             toList()
             selectOption()
-    }else{
-    console.log("\n Invalid entry ")
-        selectOption()
+    }else if(option === 3){
+
+        if(toDoList.length !== 0){
+            console.log("\n ~ Select an action a new to-do item ~")
+            toList()
     
-         }
+             newStatus = Number(prompt("> "))
+    
+                while(isNaN(newStatus) || newStatus > statusArray.length || newStatus < 1){
+                console.log(("Pease input a valid number: "))
+                newStatus = Number(prompt("> "))
+                }
+                statusArray[newStatus-1] = false
+                   
+            }else{
+                console.log("Please add to the to-do list: ")
+            }
+                toList()
+                selectOption()
+        
+
+    }
+    else if(option === 4){
+
+        if(toDoList.length !== 0){
+            console.log("\n ~ Select an action a new to-do item ~")
+            toList()
+    
+             let modify = Number(prompt("> "))
+    
+                while(isNaN(modify) || modify > statusArray.length || modify < 1 || modify === 0){
+                console.log(("Pease input a valid number: "))
+                modify = Number(prompt("> "))
+                }
+                toDoList[modify - 1] = prompt("Enter new text: ")
+                
+                toList()
+                selectOption()
+            }else{
+                console.log("Please add to the to-do list: ")
+            }
+                toList()
+                selectOption()
+        }else if(option === 5){
+
+            if(toDoList.length !== 0){
+                console.log("\n ~ Select an action a new to-do item ~")
+                toList()
+        
+                 let deleteA = Number(prompt("> "))
+        
+                    while(isNaN(deleteA) || deleteA > statusArray.length || deleteA < 1 || deleteA === 0){
+                    console.log(("Pease input a valid number: "))
+                    deleteA = Number(prompt("> "))
+                    }
+                    toDoList.splice([deleteA-1],1) 
+                    statusArray.splice([deleteA-1],1)
+                    toList()
+                    selectOption()
+                }else{
+                    console.log("Please add to the to-do list: ")
+                }
+                    toList()
+                    selectOption()
+            }else {
+            console.log("\n Invalid entry ")
+                selectOption()
 }
 
 
-console.log(" ~Exiting to-do list~")
+console.log("~Exiting to-do list~")
 
 
 
 function selectOption(){
-    console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] Exiting to-do list")
+    console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] unfinnished to-do item \n" + "[4] Modify to-do item text \n" + "[5] delete to-do item \n" + "[6] Exiting to-do list")
     option = Number(prompt(">"))
 }
 
@@ -82,4 +144,5 @@ function toList(){
             }
         console.log((i+1) + ". " + status + toDoList[i])
         }
+}
 }
