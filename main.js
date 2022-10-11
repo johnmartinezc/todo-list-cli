@@ -5,7 +5,11 @@ console.log("==============================================")
 console.log("\n")
 console.log("Your to-do list is empty.")
 
-console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] unfinnished to-do item \n" + "[6] Exiting to-do list")
+console.log("~Select an action~")
+console.log("[1] Create a to- do item ")
+console.log("[2] Complete a to-do item")
+console.log("[3] unfinnished to-do item")
+console.log("[6] Exiting to-do list")
 
 let option = Number(prompt(">"))
 let toDoList = []
@@ -123,7 +127,13 @@ console.log("~Exiting to-do list~")
 
 
 function selectOption(){
-    console.log("~Select an action~"+"\n" +"[1] Create a to- do item "+"\n" +"[2] Complete a to-do item"+ "\n" +"[3] unfinnished to-do item \n" + "[4] Modify to-do item text \n" + "[5] delete to-do item \n" + "[6] Exiting to-do list")
+    console.log("~Select an action~")
+    console.log("[1] Create a to- do item ")
+    console.log("[2] Complete a to-do item")
+    console.log("[3] unfinnished to-do item")
+    console.log("[4] Modify to-do item text")
+    console.log("[5] delete to-do item ")
+    console.log("[6] Exiting to-do list")
     option = Number(prompt(">"))
 }
 
